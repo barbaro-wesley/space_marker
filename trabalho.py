@@ -11,6 +11,8 @@ icone=pygame.image.load("space_icone.jpg")
 pygame.display.set_icon(icone)
 clock = pygame.time.Clock()
 fundo = pygame.image.load("bg.jpg")
+pygame.mixer.music.load("Space_Machine_Power.mp3")
+pygame.mixer.music.play(0,5)
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -20,4 +22,5 @@ while True:
     tela.blit(fundo, (0, 0))
     pygame.display.flip()
     clock.tick(60)
+
 
