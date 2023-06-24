@@ -33,7 +33,7 @@ while True:
             item=simpledialog.askstring("Space ", "Nome da Estrela")
             print (item)
             if item == None:
-                item == "desconhecido "+str(pos)
+                item = "desconhecido "+str(pos)
             estrelas.append((pos, item))
 
 
@@ -51,9 +51,17 @@ while True:
                 pygame.draw.line(tela, branco, circulos[i - 1], circulos[i], 1)
     fonte=pygame.font.Font(None,18)
     texto = fonte.render(f"estrelas encontradas: {len(estrelas)}", True, (branco))
-   
     tela.blit(texto, (10, 10))
-
+    opções =["Pressione F10 para salvar os dados",
+               "Pressione F11 para carregar os dados",
+               "Pressione F12 para excluir os dados "
+    ]
+    fonte_da_opção=pygame.font.Font(None,18)
+    for r, opções in enumerate (opções):
+        texto_mensagem = fonte_da_opção.render(opções, True, branco)
+        pos_mensagem = (10, 30 + r * 20)
+        tela.blit(texto_mensagem, pos_mensagem)
+    
     pygame.display.flip()
     clock.tick(60)
     
