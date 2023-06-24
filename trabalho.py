@@ -33,7 +33,7 @@ while True:
             item=simpledialog.askstring("Space ", "Nome da Estrela")
             print (item)
             if item == None:
-                item = "desconhecido "+str(pos)
+                item == "desconhecido "+str(pos)
             estrelas.append((pos, item))
 
 
@@ -43,7 +43,7 @@ while True:
     for pos,nome  in estrelas:
         pygame.draw.circle(tela, (branco), pos, 3)
         fonte = pygame.font.Font(None, 18)
-        texto=fonte.render(nome,True,branco)
+        texto = fonte.render(f"{nome} ({pos[0]}, {pos[1]})", True, branco)
         pos_texto=(pos[0]+10,pos[1]-10)
         tela.blit(texto,pos_texto)
     if len(circulos)>1:
