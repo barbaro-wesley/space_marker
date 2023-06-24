@@ -1,23 +1,20 @@
 # Wesley Barbaro(1134832) Wendel Barbaro (1134430)
 import pygame
-import random
 import winsound
 from tkinter import simpledialog
 pygame.init()
-
 tamanho = (800, 600)
 tela = pygame.display.set_mode(tamanho)
 pygame.display.set_caption("space marker")
-icone=pygame.image.load("space_icone.jpg")
-pygame.display.set_icon(icone)
+icon=pygame.image.load("space_icone.jpg")
+pygame.display.set_icon(icon)
 clock = pygame.time.Clock()
 fundo = pygame.image.load("bg.jpg")
-pygame.mixer.music.load("Space_Machine_Power.mp3")
-pygame.mixer.music.play(0,1)
+pygame.mixer.music.load("novatrilha.mp3")
+pygame.mixer.music.play(0,0,5)
 branco=(255,255,255)
 circulos=[]
 estrelas = []
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -48,15 +45,15 @@ while True:
         tela.blit(texto,pos_texto)
     if len(circulos)>1:
         for i in range (1, len(circulos)):
-                pygame.draw.line(tela, branco, circulos[i - 1], circulos[i], 1)
+                pygame.draw.line(tela, branco, circulos[i - 1], circulos[i], 3)
     fonte=pygame.font.Font(None,18)
     texto = fonte.render(f"estrelas encontradas: {len(estrelas)}", True, (branco))
     tela.blit(texto, (10, 10))
-    opções =["Pressione F10 para salvar os dados",
-               "Pressione F11 para carregar os dados",
-               "Pressione F12 para excluir os dados "
+    opções =["Pressione F10 para salvar os dados;",
+               "Pressione F11 para carregar os dados;",
+               "Pressione F12 para excluir os dados; "
     ]
-    fonte_da_opção=pygame.font.Font(None,18)
+    fonte_da_opção=pygame.font.Font(None,16)
     for r, opções in enumerate (opções):
         texto_mensagem = fonte_da_opção.render(opções, True, branco)
         pos_mensagem = (10, 30 + r * 20)
