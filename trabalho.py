@@ -1,11 +1,18 @@
 # Wesley Barbaro(1134832) Wendel Barbaro (1134430)
 import pygame
 import winsound
+import os
 from tkinter import simpledialog
 def save_points(filename):
     with open(filename, 'w') as file:
         for pos, name in estrelas:
             file.write(f"{name} ({pos[0]}, {pos[1]})\n")
+
+def resetar_marcações():
+    global estrelas,circulos
+    estrelas=[]
+    circulos=[]
+
 
 pygame.init()
 tamanho = (800, 600)
@@ -72,4 +79,5 @@ while True:
     keys=pygame.key.get_pressed()
     if keys[pygame.K_F10]:
         save_points("points.txt")
-
+    elif keys[pygame.K_F12]:
+        resetar_marcações()
