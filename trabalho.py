@@ -52,7 +52,10 @@ while True:
             pygame.quit()    
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_F10:
-                save_points("points.txt")    
+                save_points("points.txt") 
+            elif event.key == pygame.K_ESCAPE:
+                save_points("points.txt")
+                pygame.quit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             if pos[0] < tamanho[0] and pos[1] < tamanho[1]:
