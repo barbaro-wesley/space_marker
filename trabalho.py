@@ -12,7 +12,22 @@ def resetar_marcações():
     global estrelas,circulos
     estrelas=[]
     circulos=[]
-
+def carregar_pontos(filename):
+    global estrelas, circulos
+    estrelas = []
+    circulos = []
+    with open(filename, 'r') as file:
+        for line in file:
+            data = line.strip()
+            name_start = data.index(' ') + 1
+            name_end = data.index('(')
+            name = data[name_start:name_end].strip()
+            coords_start = data.index('(') + 1
+            coords_end = data.index(')')
+            coords = data[coords_start:coords_end].strip().split(',')
+            pos = (int(coords[0]), int(coords[1]))
+            estrelas.append((pos, name))
+            circulos.append(pos)
 
 pygame.init()
 tamanho = (800, 600)
@@ -81,3 +96,5 @@ while True:
         save_points("points.txt")
     elif keys[pygame.K_F12]:
         resetar_marcações()
+    elif keys[pygame.K_F11]:
+        carregar_pontos("points.txt")
