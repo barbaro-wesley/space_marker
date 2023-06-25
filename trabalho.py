@@ -2,6 +2,7 @@
 import pygame
 import winsound
 import os
+import math 
 from tkinter import simpledialog
 def save_points(filename):
     with open(filename, 'w') as file:
@@ -28,7 +29,8 @@ def carregar_pontos(filename):
             pos = (int(coords[0]), int(coords[1]))
             estrelas.append((pos, name))
             circulos.append(pos)
-
+def calculate_distance(p1, p2):
+    return math.sqrt((p2[0] - p1[0]) ** 2 + (p2[1] - p1[1]) ** 2)
 pygame.init()
 tamanho = (800, 600)
 tela = pygame.display.set_mode(tamanho)
@@ -75,7 +77,14 @@ while True:
         tela.blit(texto,pos_texto)
     if len(circulos)>1:
         for i in range (1, len(circulos)):
-                pygame.draw.line(tela, branco, circulos[i - 1], circulos[i], 3)
+            p1 = circulos[i - 1]
+            p2 = circulos[i]
+            pygame.draw.line(tela, branco, p1, p2, 3)
+            distance = calculate_distance(p1, p2)
+            fonte_distancia = pygame.font.Font(None, 18)
+            texto_distancia = fonte_distancia.render(f"Distância: {distance:.2f}", True, branco)
+            pos_distancia = ((p1[0] + p2[0]) // 2, (p1[1] + p2[1]) // 2)
+            tela.blit(texto_distancia, pos_distancia)
     fonte=pygame.font.Font(None,18)
     texto = fonte.render(f"estrelas encontradas: {len(estrelas)}", True, (branco))
     tela.blit(texto, (10, 10))
