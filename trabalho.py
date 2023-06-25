@@ -2,6 +2,11 @@
 import pygame
 import winsound
 from tkinter import simpledialog
+def save_points(filename):
+    with open(filename, 'w') as file:
+        for pos, name in estrelas:
+            file.write(f"{name} ({pos[0]}, {pos[1]})\n")
+
 pygame.init()
 tamanho = (800, 600)
 tela = pygame.display.set_mode(tamanho)
@@ -15,12 +20,15 @@ pygame.mixer.music.play(0,0,5)
 branco=(255,255,255)
 circulos=[]
 estrelas = []
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
-            
-
+            save_points("points.txt") 
+            pygame.quit()    
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_F10:
+                save_points("points.txt")    
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             if pos[0] < tamanho[0] and pos[1] < tamanho[1]:
@@ -61,6 +69,7 @@ while True:
     
     pygame.display.flip()
     clock.tick(60)
-    
-
+    keys=pygame.key.get_pressed()
+    if keys[pygame.K_F10]:
+        save_points("points.txt")
 
