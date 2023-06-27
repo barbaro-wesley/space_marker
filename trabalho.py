@@ -2,17 +2,12 @@
 import pygame
 import winsound
 import os
-<<<<<<< HEAD
-import math
-=======
 import math 
->>>>>>> f62e93e7dae0b771d3e4eed9907b5dd8309faa51
 from tkinter import simpledialog
 def save_points(filename):
     with open(filename, 'w') as file:
         for pos, name in estrelas:
             file.write(f"{name} ({pos[0]}, {pos[1]})\n")
-
 def resetar_marcações():
     global estrelas,circulos
     estrelas=[]
@@ -24,7 +19,7 @@ def carregar_pontos(filename):
     with open(filename, 'r') as file:
         for line in file:
             data = line.strip()
-            name_start = data.index(' ') + 1
+            name_start = 0
             name_end = data.index('(')
             name = data[name_start:name_end].strip()
             coords_start = data.index('(') + 1
@@ -48,7 +43,6 @@ pygame.mixer.music.play(0,0,5)
 branco=(255,255,255)
 circulos=[]
 estrelas = []
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -56,11 +50,8 @@ while True:
             pygame.quit()    
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_F10:
-<<<<<<< HEAD
                 save_points("points.txt")    
-=======
                 save_points("points.txt") 
->>>>>>> f62e93e7dae0b771d3e4eed9907b5dd8309faa51
             elif event.key == pygame.K_ESCAPE:
                 save_points("points.txt")
                 pygame.quit()
@@ -75,10 +66,7 @@ while True:
             if item == None:
                 item = "desconhecido "+str(pos)
             estrelas.append((pos, item))
-
-
     tela.blit(fundo, (0, 0))
-
     
     for pos,nome  in estrelas:
         pygame.draw.circle(tela, (branco), pos, 3)
@@ -114,12 +102,8 @@ while True:
     keys=pygame.key.get_pressed()
     if keys[pygame.K_F10]:
         save_points("points.txt")
-
     elif keys[pygame.K_F12]:
         resetar_marcações()
     elif keys[pygame.K_F11]:
-<<<<<<< HEAD
         carregar_pontos("points.txt")
-=======
-        carregar_pontos("points.txt")
->>>>>>> f62e93e7dae0b771d3e4eed9907b5dd8309faa51
+
