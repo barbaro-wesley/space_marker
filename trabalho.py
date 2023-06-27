@@ -39,7 +39,7 @@ pygame.display.set_icon(icon)
 clock = pygame.time.Clock()
 fundo = pygame.image.load("bg.jpg")
 pygame.mixer.music.load("novatrilha.mp3")
-pygame.mixer.music.play(0,0,5)
+pygame.mixer.music.play(-1)
 branco=(255,255,255)
 circulos=[]
 estrelas = []
