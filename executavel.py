@@ -1,18 +1,21 @@
 import cx_Freeze
-import  sys
+
 executables = [
-    cx_Freeze.Executable(script="trabalho.py", icon="space_icone.jpg")
+    cx_Freeze.Executable("trabalho.py", base="Win32GUI", icon="space_icone.png")
 ]
+
 cx_Freeze.setup(
-    name = "Space Marker",
-    options = {
-        "build_exe":{
+    name="Space Marker",
+    options={
+        "build_exe": {
             "packages": ["pygame"],
             "include_files": [
                 "bg.jpg",
-                "space.jpg"
+                "space_icone.jpg",
+                "novatrilha.mp3"
             ]
         }
-    } , executables = executables
+    },
+    executables=executables
 )
 
