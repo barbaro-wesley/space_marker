@@ -2,7 +2,11 @@
 import pygame
 import winsound
 import os
+<<<<<<< HEAD
 import math
+=======
+import math 
+>>>>>>> f62e93e7dae0b771d3e4eed9907b5dd8309faa51
 from tkinter import simpledialog
 def save_points(filename):
     with open(filename, 'w') as file:
@@ -52,7 +56,11 @@ while True:
             pygame.quit()    
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_F10:
+<<<<<<< HEAD
                 save_points("points.txt")    
+=======
+                save_points("points.txt") 
+>>>>>>> f62e93e7dae0b771d3e4eed9907b5dd8309faa51
             elif event.key == pygame.K_ESCAPE:
                 save_points("points.txt")
                 pygame.quit()
@@ -110,4 +118,8 @@ while True:
     elif keys[pygame.K_F12]:
         resetar_marcações()
     elif keys[pygame.K_F11]:
+<<<<<<< HEAD
         carregar_pontos("points.txt")
+=======
+        carregar_pontos("points.txt")
+>>>>>>> f62e93e7dae0b771d3e4eed9907b5dd8309faa51
